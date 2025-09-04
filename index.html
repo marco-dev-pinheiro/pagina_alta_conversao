@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domine o Digital: Web + Clientes! | Sites de Alta Conversão</title>
+    <meta name="description" content="Aprenda a dominar o digital com sites de alta conversão e garanta clientes todos os dias. Soluções profissionais e visuais impactantes para sua empresa.">
+    <meta name="keywords" content="landing page, alta conversão, clientes, sites profissionais, marketing digital, SEO, design UX/UI, Marco Pinheiro">
+    <meta name="author" content="Marco Pinheiro">
+    <meta property="og:title" content="Domine o Digital: Web + Clientes!">
+    <meta property="og:description" content="Crie sites de alta conversão e garanta clientes todos os dias com uma presença digital forte e profissional.">
+    <meta property="og:image" content="https://placehold.co/1200x630/000/fff?text=Domine+o+Digital">
+    <meta property="og:url" content="https://seusite.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00BFFF;
+            --neon-pink: #FF69B4;
+            --dark-bg: #0A0A1F;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #100C30 0%, #08031A 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M50 0L0 100h100L50 0zm0 100L0 0h100L50 100z" fill="%230c0c2a" fill-opacity="0.2"/%3E%3C/svg%3E');
+            background-size: 100px 100px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, var(--neon-blue) 0%, var(--neon-pink) 100%);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 1);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            bottom: -2px;
+            left: -2px;
+            right: -2px;
+            background: linear-gradient(90deg, var(--neon-blue) 0%, var(--neon-pink) 100%);
+            z-index: -1;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .cta-button:hover::after {
+            opacity: 1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timer-glow {
+            text-shadow: 0 0 10px #FF69B4, 0 0 20px #FF69B4, 0 0 30px #FF69B4, 0 0 40px #FF69B4;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                text-shadow: 0 0 10px #FF69B4;
+            }
+            to {
+                text-shadow: 0 0 30px #FF69B4, 0 0 40px #FF69B4;
+            }
+        }
+        
+        .line-art {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -10;
+            pointer-events: none;
+        }
+
+        .line-art svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.5)) drop-shadow(0 0 5px rgba(255, 105, 180, 0.5));
+            opacity: 0.5;
+            animation: circuit-flow 30s linear infinite;
+        }
+
+        @keyframes circuit-flow {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Funil de vendas - Estilos */
+        .funnel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .funnel-stage {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Apenas a sombra de texto para indicar hover, sem mover o funil */
+        .funnel-stage:hover .stage-title, .funnel-stage.active .stage-title {
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        .funnel-stage-2:hover .stage-title-2, .funnel-stage-2.active .stage-title-2 {
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .funnel-stage-4:hover .stage-title-4, .funnel-stage-4.active .stage-title-4 {
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .funnel-stage-description-box {
+            position: fixed; /* Fixa na tela */
+            bottom: 2rem; /* Posição na parte inferior da tela */
+            left: 50%;
+            transform: translateX(-50%);
+            min-height: 150px;
+            width: 90%;
+            max-width: 500px;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            z-index: 20;
+            pointer-events: none; /* Não bloqueia cliques quando invisível */
+            text-align: left;
+        }
+        
+        .funnel-stage-description-box.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            border: 2px solid #333;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(10, 10, 31, 0.6);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5), 0 0 10px rgba(255, 105, 180, 0.5);
+            pointer-events: auto; /* Permite cliques quando visível */
+        }
+
+        .benefits-list li {
+            position: relative;
+            padding-left: 1.5em;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .benefits-list li::before {
+            content: '✓';
+            color: var(--neon-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .funnel-instructions {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 flex flex-col items-center justify-center">
+
+    <!-- Fundo com linhas de circuito -->
+    <div class="line-art opacity-30">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" fill="none">
+            <path d="M0 400C200 100 600 100 800 400s600 300 640 200" stroke="#00BFFF" stroke-width="2"/>
+            <path d="M0 600C250 300 700 300 900 600s500 200 540 100" stroke="#FF69B4" stroke-width="2"/>
+            <circle cx="200" cy="200" r="10" fill="#FF69B4"/>
+            <circle cx="800" cy="400" r="10" fill="#00BFFF"/>
+            <circle cx="1200" cy="600" r="10" fill="#FF69B4"/>
+        </svg>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="max-w-4xl w-full flex flex-col items-center">
+        
+        <!-- Título e Subtítulo -->
+        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight mb-2 md:mb-4">
+            Domine o <span class="gradient-text">Digital: Web + Clientes+Dinheiro!</span>
+        </h1>
+        <p class="text-lg sm:text-xl font-medium text-gray-300 max-w-2xl mb-8">
+            Sites de Alta Conversão. Clientes Todos os Dias.
+        </p>
+          <p class="text-lg sm:text-xl font-medium text-gray-300 max-w-2xl mb-8">
+           Clique nas etapas do funil e entenda.
+        </p>
+
+        <!-- Funil de Vendas Interativo -->
+        <div class="funnel-container my-8">
+            <svg class="w-full h-auto" viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Estágio 1: Atração -->
+                <g id="funnel-stage-1" class="funnel-stage" data-stage="1">
+                    <path d="M0 0H200L160 50H40L0 0Z" fill="url(#blue-gradient)"/>
+                    <text x="100" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="bold" class="stage-title stage-title-1">ATRAÇÃO</text>
+                </g>
+                <!-- Estágio 2: Interesse -->
+                <g id="funnel-stage-2" class="funnel-stage" data-stage="2" transform="translate(0, 50)">
+                    <path d="M40 0H160L140 50H60L40 0Z" fill="url(#pink-gradient)"/>
+                    <text x="100" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="bold" class="stage-title stage-title-2">INTERESSE</text>
+                </g>
+                <!-- Estágio 3: Consideração -->
+                <g id="funnel-stage-3" class="funnel-stage" data-stage="3" transform="translate(0, 100)">
+                    <path d="M60 0H140L120 50H80L60 0Z" fill="url(#blue-gradient)"/>
+                    <text x="100" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="bold" class="stage-title stage-title-3">OPORTUNIDADES</text>
+                </g>
+                <!-- Estágio 4: Conversão -->
+                <g id="funnel-stage-4" class="funnel-stage" data-stage="4" transform="translate(0, 150)">
+                    <path d="M80 0H120L110 50H90L80 0Z" fill="url(#pink-gradient)"/>
+                    <text x="100" y="25" fill="#fff" text-anchor="middle" font-size="12" font-weight="bold" class="stage-title stage-title-4">CONVERSÃO</text>
+                </g>
+                <!-- Partículas de Conversão -->
+                <g id="particles" style="animation: drop-particles 3s linear infinite;">
+                    <circle cx="100" cy="180" r="2" fill="url(#blue-gradient)" opacity="0.8" />
+                    <circle cx="105" cy="185" r="2" fill="url(#pink-gradient)" opacity="0.8" />
+                    <circle cx="95" cy="190" r="2" fill="url(#blue-gradient)" opacity="0.8" />
+                </g>
+                <!-- Definição de Gradientes -->
+                <defs>
+                    <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00BFFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0080FF;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="pink-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#FF69B4;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FF1493;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div id="funnel-description-box" class="funnel-stage-description-box text-sm sm:text-base text-gray-300">
+                <p class="funnel-instructions">Clique nas etapas para entender o processo.</p>
+            </div>
+        </div>
+
+        <!-- Gatilho de Escassez e Urgência -->
+        <div class="bg-purple-900 bg-opacity-30 border border-purple-600 rounded-lg p-3 px-6 mb-8 transform -skew-x-12 relative overflow-hidden shadow-2xl">
+            <div class="transform skew-x-12">
+                <p class="text-lg sm:text-2xl font-bold text-yellow-300">PROMOÇÃO POR TEMPO LIMITADO</p>
+                <div class="flex items-center justify-center mt-2">
+                    <span id="countdown" class="timer-glow text-4xl sm:text-5xl font-mono font-bold leading-none tracking-widest">00:00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gatilho de Prova Social -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-8 max-w-3xl">
+            <div class="flex items-center space-x-2 text-sm sm:text-base font-medium text-gray-400">
+                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.63-.921 1.93 0l2.311 7.127 7.48.577c.96.074 1.344 1.285.597 1.93l-5.6 4.675 1.666 7.027c.23.97-.78 1.705-1.637 1.13L10 18.067l-6.069 3.522c-.857.575-1.867-.16-1.637-1.13l1.667-7.027-5.6-4.675c-.747-.645-.363-1.856.597-1.93l7.48-.577L9.049 2.927z"/></svg>
+                <span>+500 clientes satisfeitos</span>
+            </div>
+            <div class="flex items-center space-x-2 text-sm sm:text-base font-medium text-gray-400">
+                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span>Resultados Comprovados</span>
+            </div>
+            <div class="flex items-center space-x-2 text-sm sm:text-base font-medium text-gray-400">
+                <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h3.586l-4.793 4.793a1 1 0 001.414 1.414L16 6.414V10a1 1 0 102 0V4a1 1 0 00-1-1h-6z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+                <span>Geração de Leads Profissional</span>
+            </div>
+        </div>
+
+        <!-- Botão de Ação -->
+        <a href="https://wa.me/5551991717745" target="_blank" rel="noopener noreferrer" class="cta-button w-full sm:w-auto px-10 py-4 font-bold rounded-full text-lg sm:text-xl text-white uppercase tracking-wide cursor-pointer flex items-center justify-center gap-4">
+            Quero Minha Vaga Agora!
+            <svg class="w-6 h-6 animate-pulse" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L9 6h6L12 2zM5 8v14h14V8H5zM12 10a2 2 0 100 4 2 2 0 000-4z" fill="white"/>
+            </svg>
+        </a>
+
+        <!-- Rodapé com informações de contato -->
+        <div class="mt-12 text-center text-gray-400 text-sm">
+            <p>Siga-me nas redes sociais e confira meu trabalho:</p>
+            <div class="flex justify-center gap-4 mt-2">
+                <a href="mailto:marco.dev.pinheiro@gmail.com" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M2.003 5.884L12 12l9.997-6.116A2 2 0 0020 4H4a2 2 0 00-1.997 1.884zM22 8.632l-10 6.118-10-6.118V18a2 2 0 002 2h16a2 2 0 002-2V8.632z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/marco-pinheiro-34256b373/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.769s.784-1.769 1.75-1.769 1.75.79 1.75 1.769-.784 1.769-1.75 1.769zm13.5 12.268h-3v-5.604c0-3.368-4-3.528-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://github.com/marco-dev-pinheiero" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.373 3.435 9.387 8.204 10.875.599.111.793-.261.793-.577v-2.12c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.096-.75.082-.735.082-.735 1.205.084 1.838 1.237 1.838 1.237 1.07 1.835 2.809 1.305 3.493.998.108-.776.419-1.305.762-1.607-2.665-.304-5.467-1.334-5.467-5.931 0-1.31.465-2.383 1.237-3.224-.124-.303-.535-1.524.117-3.176 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.001-.404 1.018.005 2.044.138 3.001.404 2.292-1.553 3.299-1.23 3.299-1.23.652 1.652.241 2.873.118 3.176.772.841 1.237 1.914 1.237 3.224 0 4.597-2.806 5.626-5.474 5.928.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.797.576C20.565 21.35 24 17.348 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
+            <p class="mt-4">Marco Pinheiro Desenvolvedor E programador</p>
+        </div>
+    </div>
+    
+    <script>
+        // Dados do funil e seus benefícios
+        const funnelData = {
+            '1': {
+                title: 'ATRAÇÃO',
+                benefits: [
+                    'Otimização para mecanismos de busca (SEO) para visibilidade máxima.',
+                    'Conteúdo estratégico que atrai o público-alvo de forma natural.',
+                    'Conexão com as mídias sociais para direcionar o tráfego qualificado.'
+                ]
+            },
+            '2': {
+                title: 'INTERESSE',
+                benefits: [
+                    'Design profissional e responsivo, ideal para qualquer dispositivo.',
+                    'Mensagens claras e objetivas que prendem a atenção do visitante.',
+                    'Imagens e vídeos de alta qualidade que geram credibilidade.'
+                ]
+            },
+            '3': {
+                title: 'Oportunidades',
+                benefits: [
+                    'Gatilhos mentais de prova social (depoimentos e selos de confiança).',
+                    'Seção de perguntas frequentes para sanar dúvidas instantaneamente.',
+                    'Explicação detalhada dos benefícios do seu produto ou serviço.'
+                ]
+            },
+            '4': {
+                title: 'CONVERSÃO',
+                benefits: [
+                    'Chamadas para ação (CTAs) claras, diretas e irresistíveis.',
+                    'Formulários simples e intuitivos para contato rápido.',
+                    'Integração com o WhatsApp para comunicação direta e sem atritos.',
+                    'Animações e efeitos que guiam o usuário para a ação desejada.'
+                ]
+            }
+        };
+
+        // Função para formatar o tempo em HH:MM:SS
+        function formatTime(seconds) {
+            const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+            const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+            const s = String(seconds % 60).padStart(2, '0');
+            return `${h}:${m}:${s}`;
+        }
+
+        // Configuração do temporizador
+        let countdownTime = 60 * 5 + 47; 
+        const countdownElement = document.getElementById('countdown');
+
+        // Atualiza o temporizador a cada segundo
+        const timerInterval = setInterval(() => {
+            if (countdownTime <= 0) {
+                clearInterval(timerInterval);
+                countdownElement.textContent = '00:00:00';
+                return;
+            }
+            countdownTime--;
+            countdownElement.textContent = formatTime(countdownTime);
+        }, 1000);
+        
+        // Lógica do Funil Interativo
+        const funnelDescriptionBox = document.getElementById('funnel-description-box');
+        const stages = document.querySelectorAll('.funnel-stage');
+        let activeStageElement = null;
+
+        const showBenefits = (stage) => {
+            const stageId = stage.dataset.stage;
+
+            // Se o estágio clicado já estiver ativo, fecha o box
+            if (activeStageElement === stage) {
+                funnelDescriptionBox.classList.remove('active');
+                stage.classList.remove('active');
+                activeStageElement = null;
+                setTimeout(() => {
+                    funnelDescriptionBox.innerHTML = `<p class="funnel-instructions">Clique nas etapas para entender o processo.</p>`;
+                }, 500); // tempo para animação
+                return;
+            }
+
+            // Remove a classe 'active' do estágio anterior, se houver
+            if (activeStageElement) {
+                activeStageElement.classList.remove('active');
+            }
+
+            const stageData = funnelData[stageId];
+            if (stageData) {
+                const benefitsHtml = `
+                    <h3 class="font-bold text-lg mb-2 gradient-text">${stageData.title}</h3>
+                    <ul class="benefits-list">
+                        ${stageData.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                    </ul>
+                `;
+                funnelDescriptionBox.innerHTML = benefitsHtml;
+                funnelDescriptionBox.classList.add('active');
+                stage.classList.add('active');
+                activeStageElement = stage;
+                console.log(`Exibindo benefícios para o estágio: ${stageData.title}`);
+            }
+        };
+
+        // Adiciona event listeners de clique para cada estágio
+        stages.forEach(stage => {
+            stage.addEventListener('click', () => showBenefits(stage));
+        });
+
+        // Teste de inicialização para evitar falhas
+        window.onload = () => {
+            const allElementsExist = !!countdownElement && !!funnelDescriptionBox && stages.length > 0;
+            console.log(`Todos os elementos essenciais existem: ${allElementsExist}`);
+            console.log("Script de funil de vendas interativo carregado com sucesso.");
+        };
+
+    </script>
+</body>
+</html>
